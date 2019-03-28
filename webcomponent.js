@@ -63,7 +63,7 @@ class ImageSlider extends HTMLElement {
   }
 
   getSlotElements() {
-    return Array.from(this.shadowRoot.querySelector('slot').assignedElements());
+    return Array.from(this.shadowRoot.querySelector('slot').assignedNodes());
   }
 }
 
