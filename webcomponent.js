@@ -56,6 +56,10 @@ class ImageSlider extends HTMLElement {
         image.classList.remove('active');
       }
     });
+    this.dispatchEvent(new CustomEvent('active-image', {
+      bubbles: true,
+      detail: activeIndex,
+    }))
   }
 
   getSlotElements() {
@@ -64,3 +68,5 @@ class ImageSlider extends HTMLElement {
 }
 
 customElements.define('image-slider', ImageSlider);
+
+document.querySelector('image-slider').addEventListener('active-image', event => console.log(event.detail));
