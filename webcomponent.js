@@ -19,7 +19,7 @@ class ImageSlider extends HTMLElement {
   }
 
   showPreviousItem() {
-    const images = Array.from(this.shadowRoot.querySelectorAll('.slider img'));
+    const images = this.getSlotElements();
     let activeIndex = images.findIndex(image => image.classList.contains('active'));
     if (activeIndex === 0) {
       activeIndex = images.length - 1;
@@ -30,7 +30,7 @@ class ImageSlider extends HTMLElement {
   }
 
   showNextItem() {
-    const images = Array.from(this.shadowRoot.querySelectorAll('.slider img'));
+    const images = this.getSlotElements();
     let activeIndex = images.findIndex(image => image.classList.contains('active'));
     if (activeIndex === images.length - 1) {
       activeIndex = 0;
@@ -48,6 +48,10 @@ class ImageSlider extends HTMLElement {
         image.classList.remove('active');
       }
     });
+  }
+
+  getSlotElements() {
+    return Array.from(this.shadowRoot.querySelector('slot').assignedElements());
   }
 }
 

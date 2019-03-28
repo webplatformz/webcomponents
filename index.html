@@ -5,7 +5,12 @@
     <title>Webcomponents</title>
 </head>
 <body>
-<image-slider></image-slider>
+<image-slider>
+    <img slot="images" src="img/img1.jpg">
+    <img slot="images" class="active" src="img/img2.jpg">
+    <img slot="images" src="img/img3.jpg">
+    <img slot="images" src="img/img4.jpg">
+</image-slider>
 
 <script type="module" src="webcomponent.js"></script>
 </body>

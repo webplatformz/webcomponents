@@ -8,12 +8,12 @@ const html = `
             display: flex;
         }
         
-        img {
+        ::slotted(img) {
             max-width: 100%;
             display: none;
         }
         
-        .active {
+        ::slotted(img.active) {
             display: block;
             animation: fadeImg 0.8s;
         }
@@ -28,12 +28,7 @@ const html = `
             }
         }
     </style>
-    <div class="slider">
-      <img src="img/img1.jpg">
-      <img class="active" src="img/img2.jpg">
-      <img src="img/img3.jpg">
-      <img src="img/img4.jpg">
-    </div>
+    <slot class="slider" name="images"></slot>
 `;
 
 export function getTemplate() {
