@@ -1,6 +1,10 @@
 import { getTemplate } from './template';
 
 class ImageSlider extends HTMLElement {
+  static get observedAttributes() {
+    return ['active-index'];
+  }
+
   constructor() {
     super();
 
@@ -10,12 +14,16 @@ class ImageSlider extends HTMLElement {
     document.body.addEventListener('keydown', event => this.onKeyPress(event));
   }
 
+  attributeChangedCallback(name, oldValue, newValue) {
+    this.updateActiveElement(this.getSlotElements(), Number(newValue));
+  }
+
   onKeyPress(event) {
-      if (event.keyCode == '37') {
-        this.showPreviousItem();
-      } else if (event.keyCode == '39') {
-        this.showNextItem();
-      }
+    if (event.keyCode == '37') {
+      this.showPreviousItem();
+    } else if (event.keyCode == '39') {
+      this.showNextItem();
+    }
   }
 
   showPreviousItem() {
