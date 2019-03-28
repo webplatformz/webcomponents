@@ -1,4 +1,4 @@
-import { getTemplate } from './template';
+import { getTemplate } from './template.js';
 
 class ImageSlider extends HTMLElement {
   static get observedAttributes() {
